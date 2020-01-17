@@ -7,8 +7,9 @@ import (
 	"net/url"
 
 	"golang.org/x/net/html"
-	"appengine"
-	"appengine/urlfetch"
+	//"appengine"
+    //"appengine/urlfetch"
+    //"golang.org/x/net/context"
 )
 
 // Document represents an HTML document to be manipulated. Unlike jQuery, which
@@ -37,9 +38,10 @@ func NewDocument(r *http.Request, url string) (*Document, error) {
 	if e != nil {
 		return nil, e
 	} */
-	c := appengine.NewContext(r)
-	
-	client := urlfetch.Client(c)
+	//c := context.NewContext(r)
+	client := http.DefaultClient
+
+	//client := urlfetch.Client(c)
 	if err := r.ParseForm(); err != nil {
 		//panic(err)
 	}
